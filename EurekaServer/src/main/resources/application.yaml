@@ -1,0 +1,22 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: 192.168.0.70
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://%24/{eureka.instance.hostname}:${server.port}/eureka/
+    registryFetchIntervalSeconds: 5
+
+#spring:
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/views/
+#      suffix: '.jsp'
+#
+#tiger:
+#  ribbon:
+#    listOfServers: localhost:8082

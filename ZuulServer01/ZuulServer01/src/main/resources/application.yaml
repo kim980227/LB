@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: ZuulServer01  #현재 애플리케이션 이름
+
+server:
+  port: 8765
+
+zuul:
+  routes:
+    AUTH:                       # 2. 유레카에 ZUULMAS01로 등록된곳으로 라우팅 하세요.
+      path: /app1/**                 # 1. localhost:8765/bpp1
+      #service-id: Service01
+      strip-prefix: false
+
+    LION:                       # 2. 유레카에 ZUULMAS01로 등록된곳으로 라우팅 하세요.
+      path: /app2/**                 # 1. localhostL:8765/bpp2
+      #service-id: Service02
+      strip-prefix: false
+
+
+eureka:
+  instance:
+    non-secure-port: ${server.port}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://192.168.0.70:8761/eureka

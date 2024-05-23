@@ -1,0 +1,35 @@
+# 설정파일.........................................
+# properties 파일
+# 1. 톰캣 포트번호
+# 2. View 기본위치 설정.
+# 3. 읽을 파일.
+#server.port = 8081
+#spring.mvc.view.prefix = /WEB-INF/Views/
+#spring.mvc.view.suffix = '.jsp'
+#spring.application.name=monkey
+
+
+# yaml파일.
+server:
+  port : 8082
+  address: 192.168.0.70
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: '.jsp'
+  application:
+    name: auth
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: ${server.address}
+    instance-id: ${server.address}:${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://192.168.0.70:8761/eureka/
+    registryFetchIntervalSeconds: 5

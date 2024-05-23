@@ -1,0 +1,36 @@
+# 설정파일.........................................
+# properties 파일
+# 1. 톰캣 포트번호
+# 2. View 기본위치 설정. 
+# 3. 읽을 파일. 
+#server.port = 8081 
+#spring.mvc.view.prefix = /WEB-INF/Views/
+#spring.mvc.view.suffix = '.jsp'
+#spring.application.name=monkey
+
+
+# yaml파일. 
+server:
+  port : 8083
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: '.jsp'
+#  application:
+#    name: Feign0002
+#
+LION:
+  ribbon:
+    listOfServers: http://192.168.0.97:8083,http://192.168.0.97:8084  # 호출 대상 서비스의 인스턴스들의 URL 목록
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://192.168.0.70:8761/eureka/
+    registryFetchIntervalSeconds: 5
+  
